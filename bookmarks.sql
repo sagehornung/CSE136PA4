@@ -150,10 +150,10 @@ VALUES
 	(2, 'https://www.facebook.com/',1, NULL,NULL ,NULL ,0 ),
 	(3, 'https://angularjs.org/'   ,1, NULL,NULL ,NULL ,0 ),
 	(4, 'https://github.com/'      ,1, NULL,NULL ,NULL ,0 );
-	(5, ''  ,1, NULL,NULL ,NULL ,0 ),
-    (6, 'https://www.facebook.com/',1, NULL,NULL ,NULL ,0 ),
-    (7, 'https://angularjs.org/'   ,1, NULL,NULL ,NULL ,0 ),
-    (8, 'https://github.com/'      ,1, NULL,NULL ,NULL ,0 );
+--	(5, ''  ,1, NULL,NULL ,NULL ,0 ),
+--    (6, 'https://www.facebook.com/',1, NULL,NULL ,NULL ,0 ),
+--    (7, 'https://angularjs.org/'   ,1, NULL,NULL ,NULL ,0 ),
+--    (8, 'https://github.com/'      ,1, NULL,NULL ,NULL ,0 );
 
 
 /*!40000 ALTER TABLE `Bookmarks` ENABLE KEYS */;
