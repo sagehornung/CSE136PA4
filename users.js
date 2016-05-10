@@ -11,7 +11,7 @@ var config = require('./config');
 module.exports.login = function(req, res) {
   if (req.body.username === config.USERNAME && req.body.password === config.PASSWORD) {
     req.session.user = req.body.username;
-    res.redirect('/books');
+    res.redirect('/bookmarks');
   }
   else{
     res.redirect('/login');

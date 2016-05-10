@@ -865,9 +865,11 @@ bm-create-folder-dialog .button {
     margin-right: 0;
 }
 
+/*
 bm-create-dialog,
 bm-edit-dialog,
 bm-upload-file-dialog,
 bm-create-folder-dialog {
-    display: none;
+	 display: none;
 }
+*/

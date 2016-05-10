@@ -12,7 +12,7 @@ var list = module.exports.list = function(req, res) {
   // db.query('SELECT * from books ORDER BY id', function(err, books) {
   //   if (err) throw err;
     console.log('reurst made');
-    res.render('books/list', {});
+    res.render('bookmarks/list', {});
   
 };
 
@@ -25,7 +25,7 @@ module.exports.confirmdelete = function(req, res){
   var id = req.params.book_id;
   db.query('SELECT * from books WHERE id =  ' + id, function(err, book) {
     if (err) throw err;
-    res.render('books/delete', {book: book[0]});
+    res.render('bookmarks/delete', {book: book[0]});
   });
 };
 
@@ -34,7 +34,20 @@ module.exports.confirmdelete = function(req, res){
  * Renders the add page with the add.ejs template
  */
 module.exports.add = function(req, res) {
-  res.render('books/add');
+  res.render('bookmarks/addBookmark');
+};
+
+/**
+ *
+ * Renders the add folder page with the addFolder.ejs template
+ */
+
+module.exports.addFolder = function(req, res) {
+  res.render('bookmarks/addFolder');
+};
+
+module.exports.import = function(req, res) {
+  res.render('bookmarks/import');
 };
 
 /**
@@ -47,7 +60,7 @@ module.exports.edit = function(req, res) {
   db.query('SELECT * from books WHERE id =  ' + id, function(err, book) {
     if (err) throw err;
 
-    res.render('books/edit', {book: book[0]});
+    res.render('bookmarks/edit', {book: book[0]});
   });
 };
 
@@ -59,7 +72,7 @@ module.exports.delete = function(req, res) {
   var id = req.params.book_id;
   db.query('DELETE from books where id = ' + id, function(err){
     if (err) throw err;
-    res.redirect('/books');
+    res.redirect('/bookmarks');
   });
 };
 
@@ -74,7 +87,7 @@ module.exports.insert = function(req, res){
 
   var queryString = 'INSERT INTO books (title, author, price) VALUES (' + title + ', ' + author + ', ' + price + ')';
   db.query(queryString, function(err){
-    res.redirect('/books');
+    res.redirect('/bookmarks');
   });
 };
 
@@ -91,6 +104,6 @@ module.exports.update = function(req, res){
   var queryString = 'UPDATE books SET title = ' + title + ', author = ' + author + ', price = ' + price + ' WHERE id = ' + id;
   db.query(queryString, function(err){
     if (err) throw err;
-    res.redirect('/books');
+    res.redirect('/bookmarks');
   });
 };
