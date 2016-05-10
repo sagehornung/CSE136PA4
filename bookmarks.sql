@@ -29,12 +29,12 @@ DROP TABLE IF EXISTS `folders`;
 
 CREATE TABLE `Bookmarks` (
   `id`           int(11) unsigned       NOT NULL AUTO_INCREMENT,
-  `url`          varchar(512)           DEFAULT NOT NULL,
-  `folderId`     int(11) unsigned       DEFAULT NOT NULL,
+  `url`          varchar(512)           NOT NULL,
+  `folderId`     int(11) unsigned       NOT NULL,
   `name`         varchar(40)            DEFAULT NULL,
   `description`  varchar(2048)          DEFAULT NULL,
   `keywords`     varchar(256)           DEFAULT NULL,
-  `favorite`     int(1) unsigned        DEFAULT NOT NULL,
+  `favorite`     int(1) unsigned        NOT NULL,
 
   PRIMARY KEY (`id`),
   KEY FK_FolderId (folderId),
@@ -44,7 +44,7 @@ CREATE TABLE `Bookmarks` (
 
 CREATE TABLE `Folders` (
    `id`           int(11) unsigned       NOT NULL AUTO_INCREMENT,
-   `name`         varchar(64)            DEFAULT NOT NULL,
+   `name`         varchar(64)            NOT NULL,
    `parent`       int(11) unsigned       NOT NULL,
    PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -52,17 +52,26 @@ CREATE TABLE `Folders` (
 
 CREATE TABLE `Users` (
   `id`          int(11) unsigned       NOT NULL AUTO_INCREMENT,
-  `username`    varchar(32)            DEFAULT NOT NULL,
+  `username`    varchar(32)            NOT NULL,
   `password`    varchar(32)            DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+LOCK TABLES `users` WRITE;
+INSERT INTO `users` (`id`, `username`, `password`)
+
+VALUES
+	(1, 'cse136User', 'cse136PW'),
+	(2, 'user', '123');
+	
+UNLOCK TABLES;
 
 
 LOCK TABLES `folders` WRITE;
 INSERT INTO `folders` (`id`, `name`, `parent`)
 
 VALUE
-    (1, 'root', 0)
+    (1, 'root', 0);
 
 
 LOCK TABLES `bookmarks` WRITE;
@@ -71,10 +80,10 @@ LOCK TABLES `bookmarks` WRITE;
 INSERT INTO `bookmarks` (`id`, `url`, `folderId`, `name`, `description`, `keywords`, `favorite`)
 
 VALUES
-	(1, 'https://mail.google.com'  ,1 , , , , ),
-	(2, 'https://www.facebook.com/',1 , , , , ),
-	(3, 'https://angularjs.org/'   ,1 , , , , ),
-	(4, 'https://github.com/'      ,1 , , , , )
+	(1, 'https://mail.google.com'  ,1 , NULL, NULL, NULL, 0),
+	(2, 'https://www.facebook.com/',1 , NULL, NULL, NULL, 0),
+	(3, 'https://angularjs.org/'   ,1 , NULL, NULL, NULL, 0),
+	(4, 'https://github.com/'      ,1 , NULL, NULL, NULL, 0);
 
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -123,6 +132,16 @@ CREATE TABLE `Users` (
   `password`    varchar(32)            DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+LOCK TABLES `users` WRITE;
+INSERT INTO `users` (`id`, `username`, `password`)
+
+VALUES
+	(1, 'cse136User', 'cse136PW'),
+	(2, 'user', '123');
+	
+UNLOCK TABLES;
 
 
 
