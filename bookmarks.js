@@ -68,11 +68,12 @@ module.exports.delete = function(req, res) {
  * Does a redirect to the list page
  */
 module.exports.insert = function(req, res){
-  var title = db.escape(req.body.title);
-  var author = db.escape(req.body.author);
-  var price = db.escape(req.body.price);
+  var url = db.escape(req.body.url);
+  var name = db.escape(req.body.name);
+  var description = db.escape(req.body.description);
+  var keywords = db.escape(req.body.keywords);
 
-  var queryString = 'INSERT INTO books (title, author, price) VALUES (' + title + ', ' + author + ', ' + price + ')';
+  var queryString = 'INSERT INTO books (url, name, description, keywords) VALUES (' + url + ', ' + name + ', ' + description + ', ' + keywords + ')';
   db.query(queryString, function(err){
     res.redirect('/books');
   });
@@ -84,11 +85,12 @@ module.exports.insert = function(req, res){
  */
 module.exports.update = function(req, res){
   var id = req.params.book_id;
-  var title = db.escape(req.body.title);
-  var author = db.escape(req.body.author);
-  var price = db.escape(req.body.price);
+  var url = db.escape(req.body.url);
+  var name = db.escape(req.body.name);
+  var description = db.escape(req.body.description);
+  var keywords = db.escape(req.body.keywords);
 
-  var queryString = 'UPDATE books SET title = ' + title + ', author = ' + author + ', price = ' + price + ' WHERE id = ' + id;
+  var queryString = 'UPDATE books SET url = ' + url + ', name = ' + name + ', description = ' + description + ', keywords = ' + keywords + ' WHERE id = ' + id;
   db.query(queryString, function(err){
     if (err) throw err;
     res.redirect('/books');
