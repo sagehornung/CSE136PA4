@@ -109,3 +109,12 @@ module.exports.update = function(req, res){
     res.redirect('/bookmarks');
   });
 };
+
+/**
+ * Search:
+ * SELECT * FROM Bookmarks WHERE keywords LIKE '% ' + keywords +' %';
+ * Sort:
+ * SELECT * FROM Bookmarks ORDER BY name ASC;
+ * Visit: a href tag
+ * add=insert edit=update delete list
+ */
