@@ -9,11 +9,10 @@ var db = require('./db');
  * Selects all Bookmarks and then renders the page with the list.ejs template
  */
 var list = module.exports.list = function(req, res) {
-  // db.query('SELECT * from Bookmarks ORDER BY id', function(err, Bookmarks) {
-  //   if (err) throw err;
-    console.log('reurst made');
-    res.render('bookmarks/list', {});
-  
+  db.query('SELECT * from Bookmarks ORDER BY id', function(err, Bookmarks) {
+    if (err) throw err;
+    res.render('bookmarks/list', {bookmarks: Bookmarks});
+  });
 };
 
 /**
